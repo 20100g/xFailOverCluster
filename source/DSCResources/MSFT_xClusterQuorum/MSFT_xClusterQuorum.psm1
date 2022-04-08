@@ -36,15 +36,15 @@ function Get-TargetResource
             {
                 $clusterQuorumType = 'NodeMajority'
             }
-            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.DisplayName -eq 'Physical Disk')
+            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.Name -eq 'Physical Disk')
             {
                 $clusterQuorumType = 'NodeAndDiskMajority'
             }
-            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.DisplayName -eq 'File Share Quorum Witness')
+            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.Name -eq 'File Share Witness')
             {
                 $clusterQuorumType = 'NodeAndFileShareMajority'
             }
-            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.DisplayName -eq 'Cloud Witness')
+            elseif ($getClusterQuorumResult.QuorumResource.ResourceType.Name -eq 'Cloud Witness')
             {
                 $clusterQuorumType = 'NodeAndCloudMajority'
             }

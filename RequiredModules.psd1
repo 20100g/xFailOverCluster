@@ -20,5 +20,5 @@
     xDscResourceDesigner        = 'latest'
 
     # Dependent modules
-    'DscResource.Common'        = '0.2.0'
+    'DscResource.Common'        = '0.10.3'
 }

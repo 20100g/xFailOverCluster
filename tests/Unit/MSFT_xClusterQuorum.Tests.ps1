@@ -50,7 +50,7 @@ foreach ($moduleVersion in @('2012', '2016'))
             $mockQuorumType_NodeAndCloudMajority = 'NodeAndCloudMajority'
             $mockQuorumType_Unknown = 'Unknown'
 
-            $mockQuorumTypeDisplayName = 'File Share Quorum Witness'
+            $mockQuorumTypeName = 'File Share Witness'
 
             $mockQuorumResourceName = 'Witness'
             $mockQuorumFileShareWitnessPath = '\\FILE01\CLUSTER01'
@@ -65,7 +65,7 @@ foreach ($moduleVersion in @('2012', '2016'))
                         Name         = $mockDynamicQuorumResourceName
                         OwnerGroup   = 'Cluster Group'
                         ResourceType = [PSCustomObject] @{
-                            DisplayName = 'Physical Disk'
+                            Name = 'Physical Disk'
                         }
                     }
                 }
@@ -79,22 +79,22 @@ foreach ($moduleVersion in @('2012', '2016'))
 
                     $mockQuorumType_NodeAndDiskMajority
                     {
-                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.DisplayName = 'Physical Disk'
+                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.Name = 'Physical Disk'
                     }
 
                     $mockQuorumType_NodeAndFileShareMajority
                     {
-                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.DisplayName = $mockDynamicQuorumTypeDisplayName
+                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.Name = $mockDynamicQuorumTypeName
                     }
 
                     $mockQuorumType_NodeAndCloudMajority
                     {
-                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.DisplayName = 'Cloud Witness'
+                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.Name = 'Cloud Witness'
                     }
 
                     $mockQuorumType_Unknown
                     {
-                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.DisplayName = 'Unknown'
+                        $getClusterQuorumReturnValue.QuorumResource.ResourceType.Name = 'Unknown'
                     }
                 }
 
@@ -104,7 +104,7 @@ foreach ($moduleVersion in @('2012', '2016'))
             $mockGetClusterParameter_SharePath = {
                 @(
                     [PSCustomObject] @{
-                        ClusterObject = $mockDynamicQuorumTypeDisplayName
+                        ClusterObject = $mockDynamicQuorumTypeName
                         Name          = 'SharePath'
                         IsReadOnly    = 'False'
                         ParameterType = 'String'
@@ -283,7 +283,7 @@ foreach ($moduleVersion in @('2012', '2016'))
                             BeforeEach {
                                 $mockDynamicQuorumType = $mockQuorumType_Majority
                                 $mockDynamicExpectedQuorumType = $mockQuorumType_NodeAndFileShareMajority
-                                $mockDynamicQuorumTypeDisplayName = $mockQuorumTypeDisplayName
+                                $mockDynamicQuorumTypeName = $mockQuorumTypeName
                             }
 
                             It 'Should return the same values as passed as parameters' {
@@ -477,7 +477,7 @@ foreach ($moduleVersion in @('2012', '2016'))
                             BeforeEach {
                                 $mockDynamicQuorumType = $mockQuorumType_Majority
                                 $mockDynamicExpectedQuorumType = $mockQuorumType_NodeAndFileShareMajority
-                                $mockDynamicQuorumTypeDisplayName = $mockQuorumTypeDisplayName
+                                $mockDynamicQuorumTypeName = $mockQuorumTypeName
                             }
 
                             It 'Should return the value $false' {
